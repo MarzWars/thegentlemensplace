@@ -1,0 +1,29 @@
+User-agent: *
+# Private & authenticated routes
+Disallow: /admin
+Disallow: /account
+Disallow: /payment/
+Disallow: /webhook/
+Disallow: /call/
+Disallow: /performer-dash/
+Disallow: /credits/purchase
+Disallow: /credits/history
+Disallow: /stream/
+Disallow: /register
+Disallow: /login
+Disallow: /logout
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /verify-email/
+Disallow: /review/
+# Allow public pages
+Allow: /performers
+Allow: /performer/
+Allow: /terms
+Allow: /privacy
+Allow: /2257
+Allow: /
+# Crawl politely
+Crawl-delay: 2
+# Sitemap location
+Sitemap: https://thegentlemensplace.eu/sitemap.xml
