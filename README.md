@@ -123,13 +123,11 @@
 │   │       └── profile.php
 │   ├── htaccess
 │   └── logs/ (contents omitted)
-├── error_log
 ├── htaccess
 ├── index.php
 ├── robots.txt
 ├── rta_logo.svg
 ├── service-worker.js
-├── thegentl_production.sql
 └── uploads/
     ├── htaccess
     └── performers/ (contents omitted)
