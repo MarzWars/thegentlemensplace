@@ -1,0 +1,12 @@
+# Disable index viewing and CGI execution
+Options -Indexes -ExecCGI
+php_flag engine off
+
+# Deny handler execution for CGI/PHP/scripts
+AddHandler cgi-script .php .phtml .php3 .php4 .php5 .py .pl .sh .bash .cgi
+
+# Lock down files matching executable extensions
+<FilesMatch "\.(php|phtml|php3|php4|php5|py|pl|sh|bash|cgi)$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
