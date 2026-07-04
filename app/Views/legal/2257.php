@@ -2,7 +2,7 @@
 <section class="legal-section" style="padding: 120px 20px 80px 20px; background: var(--dark-bg); color: var(--text-light); min-height: 80vh;">
   <div class="section-inner" style="max-width: 800px; margin: 0 auto;">
     <h1 class="section-heading" style="font-family: var(--font-display); font-size: 2.5rem; color: var(--gold); margin-bottom: 30px;">
-      18 U.S.C. § 2257 Record-Keeping Requirements Compliance Statement
+      18 U.S.C. § 2257 Record-Keeping Requirements Compliance Statement 2026
     </h1>
     <div class="section-body" style="line-height: 1.8; color: var(--text-muted); font-size: 1rem;">
       <p style="margin-bottom: 20px;"><em>Effective Date: July 1, 2026</em></p>
