@@ -14,14 +14,15 @@ if (APP_ENV === 'development') {
     error_reporting(E_ALL);
 } else {
     ini_set('display_errors', '0');
-    error_reporting(0);
+    ini_set('log_errors', '1');
+    error_reporting(E_ALL);
 }
 
 // ── Database ──────────────────────────────────────────────
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'thegentl_production');
-define('DB_USER', 'thegentl_production');
-define('DB_PASS', '@GameCodeHack100500!');          // Set a strong password on production
+define('DB_NAME', 'production');
+define('DB_USER', 'production');
+define('DB_PASS', 'Horn100500!');          // Set a strong password on production
 
 // ── App ───────────────────────────────────────────────────
 define('APP_KEY', 'base64:fHhMNG0zMkpDdnM4V1lxaEZBNlE5dmFjRUtVd1p1eTI5TkhPYnkwOTIzWT0=');
