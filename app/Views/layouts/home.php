@@ -97,9 +97,9 @@ $isHomePage   = ($cleanPath === '/' || $cleanPath === '');
       {
         "@type": "WebSite",
         "@id": "<?= BASE_URL ?>#website",
-        "name": "<?= addslashes(Lang::t('meta.site_name')) ?>",
+        "name": <?= json_encode(Lang::t('meta.site_name')) ?>,
         "url": "<?= BASE_URL ?>",
-        "description": "<?= addslashes(Lang::t('meta.home_desc')) ?>",
+        "description": <?= json_encode(Lang::t('meta.home_desc')) ?>,
         "inLanguage": [<?= implode(',', array_map(fn($c) => '"' . $c . '"', array_keys(Lang::$supported))) ?>],
         "potentialAction": {
           "@type": "SearchAction",
@@ -113,7 +113,7 @@ $isHomePage   = ($cleanPath === '/' || $cleanPath === '');
       {
         "@type": "Organization",
         "@id": "<?= BASE_URL ?>#organization",
-        "name": "<?= addslashes(Lang::t('meta.site_name')) ?>",
+        "name": <?= json_encode(Lang::t('meta.site_name')) ?>,
         "url": "<?= BASE_URL ?>",
         "logo": "<?= BASE_URL . BASE_PATH ?>/Assets/img/og-default.jpg",
         "contactPoint": {
