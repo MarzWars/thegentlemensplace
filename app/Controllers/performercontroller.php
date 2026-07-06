@@ -132,16 +132,16 @@ class PerformerController extends Controller
                         'description'     => strip_tags($performer['bio'] ?? ''),
                         'knowsAbout'      => $cats,
                         'knowsLanguage'   => array_filter(array_map('trim', explode(',', $performer['languages'] ?? 'English'))),
-                    ],
-                ] + ($ratingCount > 0 ? [
-                    'aggregateRating' => [
-                        '@type'       => 'AggregateRating',
-                        'ratingValue' => $ratingAvg,
-                        'reviewCount' => $ratingCount,
-                        'bestRating'  => '5',
-                        'worstRating' => '1',
-                    ],
-                ] : []),
+                    ] + ($ratingCount > 0 ? [
+                        'aggregateRating' => [
+                            '@type'       => 'AggregateRating',
+                            'ratingValue' => $ratingAvg,
+                            'reviewCount' => $ratingCount,
+                            'bestRating'  => '5',
+                            'worstRating' => '1',
+                        ],
+                    ] : []),
+                ],
                 [
                     '@type'           => 'BreadcrumbList',
                     'itemListElement' => [
