@@ -749,7 +749,7 @@ function switchTab(browser) {
     </div>
     <div class="footer-bottom">
       <p class="footer-copy"><?= htmlspecialchars(Lang::t('footer.copy', ['year' => date('Y')])) ?></p>
-      <p class="footer-copy">Designed &amp; Maintained by <a href="https://lexdigitals.co.za" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Lexx Digitals</a></p>
+      <p class="footer-copy">Designed &amp; Maintained by <a href="https://lexdigitals.co.za" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Lex Digitals</a></p>
 
       <p class="footer-copy" style="display:flex; align-items:center; justify-content:center; gap:0.5rem; flex-wrap:wrap;">
         <?= htmlspecialchars(Lang::t('footer.adults')) ?> &nbsp;·&nbsp; support@thegentlemensplace.eu
