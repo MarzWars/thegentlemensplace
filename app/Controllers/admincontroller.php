@@ -358,12 +358,21 @@ class AdminController extends Controller
             'package_price_starter' => ['value' => '150.00', 'type' => 'string', 'desc' => 'Starter package price in ZAR'],
             'package_price_gentleman' => ['value' => '350.00', 'type' => 'string', 'desc' => 'Gentleman package price in ZAR'],
             'package_price_elite' => ['value' => '700.00', 'type' => 'string', 'desc' => 'Elite package price in ZAR'],
+            'package_price_master' => ['value' => '1000.00', 'type' => 'string', 'desc' => 'Master package price in ZAR'],
+            'package_price_vip' => ['value' => '2000.00', 'type' => 'string', 'desc' => 'VIP package price in ZAR'],
+            'package_price_ultimate' => ['value' => '5000.00', 'type' => 'string', 'desc' => 'Ultimate package price in ZAR'],
             'package_credits_starter' => ['value' => '15.0000', 'type' => 'string', 'desc' => 'Starter package base credits'],
             'package_credits_gentleman' => ['value' => '40.0000', 'type' => 'string', 'desc' => 'Gentleman package base credits'],
             'package_credits_elite' => ['value' => '90.0000', 'type' => 'string', 'desc' => 'Elite package base credits'],
+            'package_credits_master' => ['value' => '130.0000', 'type' => 'string', 'desc' => 'Master package base credits'],
+            'package_credits_vip' => ['value' => '280.0000', 'type' => 'string', 'desc' => 'VIP package base credits'],
+            'package_credits_ultimate' => ['value' => '750.0000', 'type' => 'string', 'desc' => 'Ultimate package base credits'],
             'package_bonus_starter' => ['value' => '0.0000', 'type' => 'string', 'desc' => 'Starter package bonus credits'],
             'package_bonus_gentleman' => ['value' => '5.0000', 'type' => 'string', 'desc' => 'Gentleman package bonus credits'],
             'package_bonus_elite' => ['value' => '15.0000', 'type' => 'string', 'desc' => 'Elite package bonus credits'],
+            'package_bonus_master' => ['value' => '25.0000', 'type' => 'string', 'desc' => 'Master package bonus credits'],
+            'package_bonus_vip' => ['value' => '50.0000', 'type' => 'string', 'desc' => 'VIP package bonus credits'],
+            'package_bonus_ultimate' => ['value' => '150.0000', 'type' => 'string', 'desc' => 'Ultimate package bonus credits'],
         ];
 
         foreach ($keys as $key => $meta) {
@@ -376,24 +385,15 @@ class AdminController extends Controller
                 ")->execute([$key, $meta['value'], $meta['type'], $meta['desc']]);
 
                 // Also update credit_packages table to match
-                if ($key === 'package_price_starter') {
-                    $this->db->prepare("UPDATE credit_packages SET price_zar = ? WHERE id = 1")->execute([150.00]);
-                } elseif ($key === 'package_price_gentleman') {
-                    $this->db->prepare("UPDATE credit_packages SET price_zar = ? WHERE id = 2")->execute([350.00]);
-                } elseif ($key === 'package_price_elite') {
-                    $this->db->prepare("UPDATE credit_packages SET price_zar = ? WHERE id = 3")->execute([700.00]);
-                } elseif ($key === 'package_credits_starter') {
-                    $this->db->prepare("UPDATE credit_packages SET credits = ? WHERE id = 1")->execute([15.0000]);
-                } elseif ($key === 'package_credits_gentleman') {
-                    $this->db->prepare("UPDATE credit_packages SET credits = ? WHERE id = 2")->execute([40.0000]);
-                } elseif ($key === 'package_credits_elite') {
-                    $this->db->prepare("UPDATE credit_packages SET credits = ? WHERE id = 3")->execute([90.0000]);
-                } elseif ($key === 'package_bonus_starter') {
-                    $this->db->prepare("UPDATE credit_packages SET bonus_credits = ? WHERE id = 1")->execute([0.0000]);
-                } elseif ($key === 'package_bonus_gentleman') {
-                    $this->db->prepare("UPDATE credit_packages SET bonus_credits = ? WHERE id = 2")->execute([5.0000]);
-                } elseif ($key === 'package_bonus_elite') {
-                    $this->db->prepare("UPDATE credit_packages SET bonus_credits = ? WHERE id = 3")->execute([15.0000]);
+                if (preg_match('/^package_(price|credits|bonus)_(.*)$/', $key, $m)) {
+                    $fieldMap = [
+                        'price' => 'price_zar',
+                        'credits' => 'credits',
+                        'bonus' => 'bonus_credits'
+                    ];
+                    $dbField = $fieldMap[$m[1]];
+                    $pkgName = $m[2];
+                    $this->db->prepare("UPDATE credit_packages SET {$dbField} = ? WHERE LOWER(name) = ?")->execute([(float)$meta['value'], strtolower($pkgName)]);
                 }
             }
         }
@@ -450,24 +450,15 @@ class AdminController extends Controller
                 if ($key === 'admin_proxy_mode') {
                     $this->updatePerformersForProxyMode($value);
                 }
-                if ($key === 'package_price_starter') {
-                    $this->db->prepare("UPDATE credit_packages SET price_zar = ? WHERE id = 1")->execute([(float)$value]);
-                } elseif ($key === 'package_price_gentleman') {
-                    $this->db->prepare("UPDATE credit_packages SET price_zar = ? WHERE id = 2")->execute([(float)$value]);
-                } elseif ($key === 'package_price_elite') {
-                    $this->db->prepare("UPDATE credit_packages SET price_zar = ? WHERE id = 3")->execute([(float)$value]);
-                } elseif ($key === 'package_credits_starter') {
-                    $this->db->prepare("UPDATE credit_packages SET credits = ? WHERE id = 1")->execute([(float)$value]);
-                } elseif ($key === 'package_credits_gentleman') {
-                    $this->db->prepare("UPDATE credit_packages SET credits = ? WHERE id = 2")->execute([(float)$value]);
-                } elseif ($key === 'package_credits_elite') {
-                    $this->db->prepare("UPDATE credit_packages SET credits = ? WHERE id = 3")->execute([(float)$value]);
-                } elseif ($key === 'package_bonus_starter') {
-                    $this->db->prepare("UPDATE credit_packages SET bonus_credits = ? WHERE id = 1")->execute([(float)$value]);
-                } elseif ($key === 'package_bonus_gentleman') {
-                    $this->db->prepare("UPDATE credit_packages SET bonus_credits = ? WHERE id = 2")->execute([(float)$value]);
-                } elseif ($key === 'package_bonus_elite') {
-                    $this->db->prepare("UPDATE credit_packages SET bonus_credits = ? WHERE id = 3")->execute([(float)$value]);
+                if (preg_match('/^package_(price|credits|bonus)_(.*)$/', $key, $m)) {
+                    $fieldMap = [
+                        'price' => 'price_zar',
+                        'credits' => 'credits',
+                        'bonus' => 'bonus_credits'
+                    ];
+                    $dbField = $fieldMap[$m[1]];
+                    $pkgName = $m[2];
+                    $this->db->prepare("UPDATE credit_packages SET {$dbField} = ? WHERE LOWER(name) = ?")->execute([(float)$value, strtolower($pkgName)]);
                 }
                 $this->db->prepare(
                     "UPDATE settings SET `value` = ?, `updated_at` = NOW() WHERE `key` = ?"

@@ -723,6 +723,7 @@ function switchTab(browser) {
           <li><a href="<?= BASE_PATH ?>/performers"><?= htmlspecialchars(Lang::t('nav.performers')) ?></a></li>
           <li><a href="<?= BASE_PATH ?>/#how-it-works"><?= htmlspecialchars(Lang::t('nav.how_it_works')) ?></a></li>
           <li><a href="<?= BASE_PATH ?>/#pricing"><?= htmlspecialchars(Lang::t('nav.credits')) ?></a></li>
+          <li><a href="https://client.thegentlemensplace.eu">Work With Us</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -744,6 +745,12 @@ function switchTab(browser) {
           <li><a href="<?= BASE_PATH ?>/terms"><?= htmlspecialchars(Lang::t('footer.terms')) ?></a></li>
           <li><a href="<?= BASE_PATH ?>/privacy"><?= htmlspecialchars(Lang::t('footer.privacy')) ?></a></li>
           <li><a href="<?= BASE_PATH ?>/2257"><?= htmlspecialchars(Lang::t('footer.usc')) ?></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Partners</p>
+        <ul class="footer-links">
+          <li><a href="https://thepornmap.com" target="_blank" rel="noopener noreferrer">best porn sites</a></li>
         </ul>
       </div>
     </div>

@@ -351,6 +351,7 @@ if (!isset($skipLayoutFooter)):
           <li><a href="<?= Lang::base() ?>/performers"><?= htmlspecialchars(Lang::t('nav.performers')) ?></a></li>
           <li><a href="<?= Lang::base() ?>/#how-it-works"><?= htmlspecialchars(Lang::t('nav.how_it_works')) ?></a></li>
           <li><a href="<?= Lang::base() ?>/#pricing"><?= htmlspecialchars(Lang::t('nav.credits')) ?></a></li>
+          <li><a href="https://client.thegentlemensplace.eu">Work With Us</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -372,6 +373,12 @@ if (!isset($skipLayoutFooter)):
           <li><a href="<?= Lang::base() ?>/terms"><?= htmlspecialchars(Lang::t('footer.terms')) ?></a></li>
           <li><a href="<?= Lang::base() ?>/privacy"><?= htmlspecialchars(Lang::t('footer.privacy')) ?></a></li>
           <li><a href="<?= Lang::base() ?>/2257"><?= htmlspecialchars(Lang::t('footer.usc')) ?></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Partners</p>
+        <ul class="footer-links">
+          <li><a href="https://thepornmap.com" target="_blank" rel="noopener noreferrer">best porn sites</a></li>
         </ul>
       </div>
     </div>

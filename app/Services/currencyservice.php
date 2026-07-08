@@ -141,10 +141,13 @@ class CurrencyService
      */
     public static function packagePrice(array $package, string $currency): float
     {
+        $zarAmount = (float)$package['price_zar'];
+        
         if ($currency === 'ZAR') {
-            return (float)$package['price_zar'];
+            return $zarAmount;
         }
-        return self::fromZAR((float)$package['price_zar'], $currency);
+        
+        return self::fromZAR($zarAmount, $currency);
     }
 
     /**
