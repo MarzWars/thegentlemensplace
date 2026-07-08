@@ -187,10 +187,8 @@ $isHomePage   = ($cleanPath === '/' || $cleanPath === '');
 
 <!-- PRELOADER -->
 <div id="preloader" role="status" aria-label="Loading">
-  <div class="preloader-crest">
-    <div class="preloader-line">Est. MMXXV</div>
-    <div class="preloader-monogram">GC</div>
-    <div class="preloader-line"><?= htmlspecialchars(Lang::t('meta.site_name')) ?></div>
+  <div class="preloader-crest" style="margin-bottom: 2rem;">
+    <img src="<?= BASE_PATH ?>/Assets/img/logo.png" alt="<?= htmlspecialchars(Lang::t('meta.site_name')) ?>" style="height: 120px; width: auto;" class="preloader-logo" />
   </div>
   <div class="preloader-bar-wrap"><div class="preloader-bar"></div></div>
   <div class="preloader-pct">0%</div>
