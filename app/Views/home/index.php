@@ -54,6 +54,23 @@ $homePrices = [
 ];
 ?>
 
+<style>
+    .premium-card {
+      border: 1px solid #c9a84c !important;
+      box-shadow: 0 0 15px rgba(201, 168, 76, 0.15) !important;
+      position: relative;
+    }
+    .premium-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow: inset 0 0 20px rgba(201, 168, 76, 0.05);
+      pointer-events: none;
+      z-index: 5;
+    }
+  </style>
+
 <!-- ═══════════════════════════════════════════════════════
      HERO
 ════════════════════════════════════════════════════════ -->
@@ -63,8 +80,9 @@ $homePrices = [
   <div class="hero-vignette" aria-hidden="true"></div>
   <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
-  <div class="hero-content">
-    <p class="hero-eyebrow"><?= htmlspecialchars(Lang::t('hero.eyebrow')) ?></p>
+  <div class="section-inner hero-inner">
+    <div class="hero-content">
+      <p class="hero-eyebrow"><?= htmlspecialchars(Lang::t('hero.eyebrow')) ?></p>
     <h1 class="hero-title">
       <?= Lang::t('hero.title_1') ?><br><em><?= Lang::t('hero.title_em') ?></em>
     </h1>
@@ -99,12 +117,12 @@ $homePrices = [
 <div class="stats-strip">
   <div class="stats-inner">
     <div class="stat-item reveal">
-      <span class="stat-value">500+</span>
+      <span class="stat-value">95+</span>
       <span class="stat-label"><?= htmlspecialchars(Lang::t('stats.performers')) ?></span>
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
     <div class="stat-item reveal delay-1">
-      <span class="stat-value">50K+</span>
+      <span class="stat-value">900+</span>
       <span class="stat-label"><?= htmlspecialchars(Lang::t('stats.members')) ?></span>
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
@@ -251,8 +269,16 @@ $featuredList = !empty($featured) ? $featured : $demoFeatured;
         // First card is large (featured hero), rest are standard
         $isHero   = ($i === 0);
       ?>
-      <article class="featured-card <?= $isHero ? 'featured-card-hero' : '' ?> reveal <?= $delay ?>"
+      <?php
+        $isPremium = ($p['tier'] ?? '') === 'premium';
+      ?>
+      <article class="featured-card <?= $isHero ? 'featured-card-hero' : '' ?> reveal <?= $delay ?> <?= $isPremium ? 'premium-card' : '' ?>"
                aria-label="<?= $name ?>">
+        <?php if ($isPremium): ?>
+          <div class="premium-badge-wrapper" style="position: absolute; top: -10px; right: -10px; z-index: 20;">
+            <div style="background: linear-gradient(135deg, #c9a84c 0%, #e2c974 50%, #b29239 100%); color: #111; font-weight: bold; font-size: 0.7rem; padding: 4px 10px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); letter-spacing: 0.05em; text-transform: uppercase;">Premium</div>
+          </div>
+        <?php endif; ?>
 
         <!-- Background / photo -->
         <a href="<?= BASE_PATH ?>/performer/<?= $slug ?>" class="featured-card-bg" tabindex="-1" aria-hidden="true">

@@ -47,16 +47,16 @@ class Performer
         }
 
         $orderBy = match($filters['sort'] ?? 'popular') {
-            'rating'  => 'rating_avg DESC',
-            'newest'  => 'created_at DESC',
-            'popular' => 'total_calls DESC, rating_avg DESC',
-            default   => 'online_status DESC, rating_avg DESC',
+            'rating'  => "tier = 'premium' DESC, rating_avg DESC",
+            'newest'  => "tier = 'premium' DESC, created_at DESC",
+            'popular' => "tier = 'premium' DESC, total_calls DESC, rating_avg DESC",
+            default   => "tier = 'premium' DESC, online_status DESC, rating_avg DESC",
         };
 
         $page   = max(1, (int)($filters['page'] ?? 1));
         $offset = ($page - 1) * 12;
         $sql    = "SELECT id, uuid, display_name, slug, bio, age, rate_per_minute, status,
-                          online_status, profile_photo, category, languages, rating_avg, rating_count, total_calls
+                          online_status, profile_photo, category, languages, rating_avg, rating_count, total_calls, tier
                    FROM performers
                    WHERE " . implode(' AND ', $where) . "
                    ORDER BY {$orderBy}

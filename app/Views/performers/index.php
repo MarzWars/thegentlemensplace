@@ -200,6 +200,22 @@ $jsonLd = json_encode($jsonLdData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICO
 <?php endif; ?>
 
 <!-- ── Grid ── -->
+<style>
+  .premium-card {
+    border: 1px solid #c9a84c !important;
+    box-shadow: 0 0 15px rgba(201, 168, 76, 0.15);
+    position: relative;
+  }
+  .premium-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 20px rgba(201, 168, 76, 0.05);
+    pointer-events: none;
+    z-index: 5;
+  }
+</style>
 <div class="performers-page">
   <div class="performers-grid" id="performers-grid">
     <?php foreach ($list as $p): ?>
@@ -218,8 +234,14 @@ $jsonLd = json_encode($jsonLdData, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICO
       $initials = $p['_initials'] ?? strtoupper(substr($p['display_name'], 0, 2));
       $bgColor  = $p['_color'] ?? 'linear-gradient(145deg,#1a1610,#2a1a0a)';
       $hasPhoto = !empty($p['profile_photo']);
+      $isPremium= ($p['tier'] ?? '') === 'premium';
     ?>
-    <article class="performer-card reveal" aria-label="<?= $name ?>">
+    <article class="performer-card reveal <?= $isPremium ? 'premium-card' : '' ?>" aria-label="<?= $name ?>">
+      <?php if ($isPremium): ?>
+        <div class="premium-badge-wrapper" style="position: absolute; top: -10px; right: -10px; z-index: 10;">
+          <div style="background: linear-gradient(135deg, #c9a84c 0%, #e2c974 50%, #b29239 100%); color: #111; font-weight: bold; font-size: 0.7rem; padding: 4px 10px; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); letter-spacing: 0.05em; text-transform: uppercase;">Premium</div>
+        </div>
+      <?php endif; ?>
 
       <!-- Photo / avatar -->
       <a href="<?= BASE_PATH ?>/performer/<?= $slug ?>" class="performer-card-photo-wrap" tabindex="-1" aria-hidden="true">
