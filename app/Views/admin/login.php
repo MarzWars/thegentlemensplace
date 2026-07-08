@@ -2,7 +2,7 @@
   <div class="admin-auth-card">
 
     <div class="admin-auth-header">
-      <div class="admin-auth-logo">GC</div>
+      <img src="<?= BASE_PATH ?>/Assets/img/logo.png" alt="Logo" style="height: 100px; width: auto; margin: 0 auto 1rem; display: block;" />
       <h1 class="admin-auth-title">Admin Portal</h1>
       <p class="admin-auth-sub">The Gentleman's Place</p>
     </div>

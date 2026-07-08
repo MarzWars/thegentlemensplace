@@ -3,7 +3,7 @@
 
     <div class="auth-card-header">
       <a href="<?= BASE_PATH ?>/" class="auth-logo" aria-label="Home">
-        <span class="auth-logo-mark">GC</span>
+        <img src="<?= BASE_PATH ?>/Assets/img/logo.png" alt="The Gentleman's Place" style="height: 100px; width: auto; margin-bottom: 1rem;" />
       </a>
       <h1 class="auth-title">Welcome Back</h1>
       <p class="auth-subtitle">Sign in to your account</p>

@@ -99,8 +99,7 @@ document.getElementById('age-enter-btn').addEventListener('click', function () {
 <header id="navbar">
   <div class="nav-inner">
     <a href="<?= BASE_PATH ?>/" class="nav-logo" aria-label="The Gentleman's Place — Home">
-      <span class="nav-logo-mark" aria-hidden="true">GC</span>
-      <span class="nav-logo-text">The Gentleman's Place</span>
+      <img src="<?= BASE_PATH ?>/Assets/img/logo.png" alt="The Gentleman's Place" style="height: 90px; width: auto; margin-top: 5px;" />
     </a>
     <nav class="nav-links" aria-label="Main navigation">
       <a href="<?= BASE_PATH ?>/performers">Performers</a>
@@ -131,7 +130,9 @@ document.getElementById('age-enter-btn').addEventListener('click', function () {
   <button class="drawer-close" id="drawer-close" aria-label="Close menu">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
   </button>
-  <div class="drawer-logo">GC</div>
+  <div class="drawer-logo">
+    <img src="<?= BASE_PATH ?>/Assets/img/logo.png" alt="The Gentleman's Place" style="height: 75px; width: auto;" />
+  </div>
   <nav class="drawer-links">
     <a href="<?= BASE_PATH ?>/performers">Performers</a>
     <a href="<?= BASE_PATH ?>/#how-it-works">How It Works</a>

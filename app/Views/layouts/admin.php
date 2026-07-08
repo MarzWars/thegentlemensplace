@@ -23,7 +23,7 @@
   <!-- ── Sidebar ── -->
   <aside class="admin-sidebar" id="admin-sidebar">
     <div class="admin-sidebar-header">
-      <div class="admin-logo-mark">GC</div>
+      <img src="<?= BASE_PATH ?>/Assets/img/logo.png" alt="Logo" style="height: 80px; width: auto;" />
       <div class="admin-logo-text">
         <span class="admin-logo-title">Admin Panel</span>
         <span class="admin-logo-role"><?= htmlspecialchars($_SESSION['admin_role'] ?? 'admin') ?></span>
