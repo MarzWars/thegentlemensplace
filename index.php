@@ -116,7 +116,7 @@ $_SESSION['locale'] = \App\Core\Lang::locale();
 $routeUriClean = trim($resolved['remainder'] ?? '', '/');
 $isAdminRoute = ($routeUriClean === 'admin' || str_starts_with($routeUriClean, 'admin/'));
 $isWebhook = ($routeUriClean === 'payment/notify' || str_starts_with($routeUriClean, 'webhook/'));
-$isSitemap = ($routeUriClean === 'sitemap.xml');
+$isSitemap = ($routeUriClean === 'sitemap.xml' || $routeUriClean === 'sitemap-main.xml');
 
 if (!$isAdminRoute && !$isWebhook && !$isSitemap) {
     // Check if the URL has a language prefix

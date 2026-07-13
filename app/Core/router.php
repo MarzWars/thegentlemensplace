@@ -18,6 +18,7 @@ class Router
             // Public
             ['GET',  '/',                   'HomeController@index',               []],
             ['GET',  'sitemap.xml',         'SitemapController@index',            []],
+            ['GET',  'sitemap-main.xml',     'SitemapController@main',             []],
             ['GET',  'performers',          'PerformerController@index',          ['age_gate']],
             ['GET',  'performers/category/{category}', 'PerformerController@index', ['age_gate']],
             ['GET',  'performer/{slug}',    'PerformerController@show',           ['age_gate']],

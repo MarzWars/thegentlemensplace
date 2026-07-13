@@ -27,3 +27,5 @@ Allow: /
 Crawl-delay: 2
 # Sitemap location
 Sitemap: https://thegentlemensplace.eu/sitemap.xml
+Sitemap: https://thegentlemensplace.eu/sitemap-main.xml
+Sitemap: https://client.thegentlemensplace.eu/sitemap.xml

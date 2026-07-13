@@ -7,7 +7,40 @@ use App\Config\Database;
 
 class SitemapController extends Controller
 {
+    /**
+     * GET /sitemap.xml
+     * Master Sitemap Index — references all child sitemaps across domains.
+     */
     public function index(): void
+    {
+        header('Content-Type: application/xml; charset=UTF-8');
+
+        $today = date('Y-m-d');
+
+        echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+        echo '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+
+        // ── Main site content sitemap ─────────────────────────────────────
+        echo "  <sitemap>\n";
+        echo "    <loc>https://thegentlemensplace.eu/sitemap-main.xml</loc>\n";
+        echo "    <lastmod>{$today}</lastmod>\n";
+        echo "  </sitemap>\n";
+
+        // ── Independent Performer Portal (client subdomain) sitemap ───────
+        echo "  <sitemap>\n";
+        echo "    <loc>https://client.thegentlemensplace.eu/sitemap.xml</loc>\n";
+        echo "    <lastmod>{$today}</lastmod>\n";
+        echo "  </sitemap>\n";
+
+        echo '</sitemapindex>';
+        exit;
+    }
+
+    /**
+     * GET /sitemap-main.xml
+     * Full sitemap for thegentlemensplace.eu — all static pages and performer profiles.
+     */
+    public function main(): void
     {
         $baseUrl = 'https://thegentlemensplace.eu';
 
